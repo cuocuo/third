@@ -22,4 +22,4 @@
 http-response ^https?:\/\/.+((ximalaya)|(xmcdn)).+(mobile-user\/v2\/homePage|product\/detail\/v1|v1\/album\/track\/ts|mobile-playpage\/track\/v4\/baseInfo\/ts|mobile-playpage\/playpage\/tabs\/v2|mobile-playpage\/playpage\/track\/qualityAndEffect|mobile\/download\/v2\/track|mobile-user-grade\/decoratorV2\/decorationDetails\/page|mobile-album\/album\/plant\/grass) script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/ximalaya.js, timeout=60, requires-body=true, tag=ximalaya_1
 
 [MITM]
-hostname = mobwsa.ximalaya.com, mobile.ximalaya.com, apisg.himalaya.com, adse.ximalaya.com, *.xmcdn.com, *.ximalaya.com, ulogs.umeng.com, www.taobao.com, *.mysteel.*, *xima*, *xmcdn*, passport.ximalaya.com, m.ximalaya.com
+hostname = mobwsa.ximalaya.com, mobile.ximalaya.com, apisg.himalaya.com, adse.ximalaya.com, *.xmcdn.com, *.ximalaya.com, ulogs.umeng.com, passport.ximalaya.com, m.ximalaya.com

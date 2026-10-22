@@ -14,4 +14,4 @@
 http-request ^https?:\/\/.+\/api\/(video\/report_item?|live\/room\/detail?|video\/related?|video\/detail|socialposts_info|my\/profile) script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/byhz.js, timeout=60, tag=byhz_1
 
 [MITM]
-hostname = w1c2.ooat88.com, tu.dfgfdg.win, *.artrg.cn, vkfqb.ojyrz.com, byapi.*.com, yubaoyu.oss-cn-shenzhen.aliyuncs.com, *api.h8h4h.com, siajksslwiso.anningsh.com, vdop.fqoas.com, ica.ooat88.com
+hostname = w1c2.ooat88.com, tu.dfgfdg.win, *.artrg.cn, vkfqb.ojyrz.com, yubaoyu.oss-cn-shenzhen.aliyuncs.com, siajksslwiso.anningsh.com, vdop.fqoas.com, ica.ooat88.com
