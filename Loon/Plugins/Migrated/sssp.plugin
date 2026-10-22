@@ -1,0 +1,14 @@
+#!name = sssp (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/chxm1023/Advertising/main/sssp.js
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/chxm1023/Advertising/main/sssp.js
+
+[Script]
+http-response ^https:\/\/ssapple\.lianfa1\.com\/(?!index\/fire|api|static).* script-path=https://raw.githubusercontent.com/chxm1023/Advertising/main/sssp.js, timeout=60, requires-body=true, tag=sssp_1
+
+[MITM]
+hostname = ssapple.lianfa1.com
