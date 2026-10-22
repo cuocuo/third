@@ -1,0 +1,15 @@
+#!name = FakeiOSAds (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/FakeiOSAds.conf
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/FakeiOSAds.conf
+
+[Rewrite]
+^http:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,4}(:\d+)?\/api\/v\d\/config\/getConfigList\.do response-body-json-jq '.data |= map(select(.keyName | test("config\\.(ad|search|recommend)") | not))'
+^http:\/\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){1,4}(:\d+)?\/.*?\/v\d\/(version|notice\?|top_notice\?|advert\?position=[^2]+) reject-200
+
+[MITM]
+hostname = app.dsx.ac
