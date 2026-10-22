@@ -1,0 +1,15 @@
+# 上游：https://raw.githubusercontent.com/ifflagged/Romeo/main/Modules/Loon/ddgksf2013/GuaZiVideoAds.lpx
+# 静态 Loon 版，已移除无效图标及 QX 转换残留；真机效果待验收
+#!name=GuaZiVideoAds
+#!desc=GuaZiVideoAds
+
+#!tag=ddgksf2013
+
+[Rewrite]
+^https?:\/\/(gzapi|jk).*com\/App\/[Aa]d\/(?!play) reject
+^https?:\/\/(gzapi|jk).*com\/App\/Resource\/CommentAd reject
+^https?:\/\/(gzapi|jk).*com\/App\/IndexPlay\/vodAdvertisement reject
+^https?:\/\/(gzapi|jk).*com\/App\/IndexList\/homeFloatAd reject
+[MITM]
+# 原源文件使用 jk.*.com 和 gzapi.*.com 非标准通配域名；需核实实际 MITM hostname 才能启用
+
