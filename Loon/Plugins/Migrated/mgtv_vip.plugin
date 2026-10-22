@@ -1,0 +1,14 @@
+#!name = mgtv_vip (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/mgtv_vip.snippet
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/mgtv_vip.snippet
+
+[Script]
+http-request ^https?:\/\/mobile-stream\.api\.mgtv\.com\/v1\/video\/source script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/mgtv_vip.js, timeout=60, tag=mgtv_vip_1
+
+[MITM]
+hostname = mobile-stream.api.mgtv.com

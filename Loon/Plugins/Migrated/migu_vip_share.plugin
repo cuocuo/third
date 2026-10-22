@@ -1,0 +1,15 @@
+#!name = migu_vip_share (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/migu_vip_share.snippet
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/migu_vip_share.snippet
+
+[Script]
+http-request ^https?:\/\/(play|play-pre|v|v[0-9]?-sc|vmesh|app-sc|vms-sc|display(-sc)?|common-sc|program-sc|d[0-9]-sc|fs-sc|fsdv-sc|mp-user|recommend-dy|chat|chat-wx|public-deliver[0-9]?|public-operbiz[0-9]?|public-img)\.miguvideo\.com\/.+ script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/migu_vip.js, timeout=60, tag=migu_vip_share_1
+http-request ^https?:\/\/(passport|uem|push|jadeite|jadeiteapp|hound|feedback|rcsdk)\.migu\.cn\/.+ script-path=https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/migu_vip.js, timeout=60, tag=migu_vip_share_2
+
+[MITM]
+hostname = *.miguvideo.com, *.migu.cn

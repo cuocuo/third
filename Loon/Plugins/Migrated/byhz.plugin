@@ -1,0 +1,17 @@
+#!name = byhz (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/WeiGiegie/666/main/byhz.js
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/WeiGiegie/666/main/byhz.js
+
+[Rewrite]
+^https?://siajksslwiso\.anningsh\.com/report reject-200
+
+[Script]
+http-request ^https?:\/\/.+\/api\/(video\/report_item?|live\/room\/detail?|video\/related?|video\/detail|socialposts_info|my\/profile) script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/byhz.js, timeout=60, tag=byhz_1
+
+[MITM]
+hostname = w1c2.ooat88.com, tu.dfgfdg.win, *.artrg.cn, vkfqb.ojyrz.com, byapi.*.com, yubaoyu.oss-cn-shenzhen.aliyuncs.com, *api.h8h4h.com, siajksslwiso.anningsh.com, vdop.fqoas.com, ica.ooat88.com
