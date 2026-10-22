@@ -1,0 +1,24 @@
+#!name = 微博增强 WeiboEnhanced（Loon 原生）
+#!desc = 将墨鱼 WeiboEnhanced QX 重写规则迁移为 Loon 3.5.2 原生 Script 插件，不需要 Script Hub
+#!author = ddgksf2013（原规则与脚本） / Loon 原生语法改写
+#!homepage = https://ddgksf2013.top/rewrite/WeiboEnhanced.conf
+#!system = iOS, iPadOS
+#!loon_version = 3.5.1(983)
+#!date = 2026-10-21
+#!tag = 微博, 去广告, 界面净化
+
+# 规则基准：WeiboEnhanced.conf 镜像快照（2026-10-19, V0.1.21）
+# 源配置 URL：https://ddgksf2013.top/rewrite/WeiboEnhanced.conf
+# 本插件为 Loon 原生 .plugin，不通过 Script Hub 动态转换。
+# 功能逻辑由外部 weibo_json.js 提供；源 JS 的实际运行效果需在设备上验证。
+# 启用前请停用其他微博插件及重叠的微博脚本，以免同一请求重复处理。
+
+[Script]
+request if ${url} ~= /^https:\/\/api\.weibo\.cn\/__qx_weibo_settings__\/(?:api\/config)?(?=[?#]|$)/i then script("https://ddgksf2013.top/scripts/weibo_json.js") with tag="配置读取", timeout=60
+request if ${url} ~= /^https:\/\/api\.weibo\.cn\/__qx_weibo_settings__\/api\/(?:save|reset)(?=[?#]|$)/i then script("https://ddgksf2013.top/scripts/weibo_json.js") with tag="配置保存与重置", timeout=60, requires_body=true
+response if ${url} ~= /^https?:\/\/api\.weibo\.cn(?:\/2\/statuses\/container_timeline_hot|\/2\/guest\/container_timeline_hot|\/2\/statuses\/container_timeline_unread|\/2\/statuses\/container_timeline|\/2\/live\/media_homelist|\/2\/remind\/hometab_dot|\/2\/remind\/unread_count|\/2\/statuses\/container_detail|\/2\/statuses\/container_detail_comment|\/2\/comments\/build_comments|\/2\/search\/finder|\/2\/search\/container_timeline|\/2\/search\/container_discover|\/2\/!\/was\/finder\/searchbarchange|\/2\/cardlist|\/2\/searchall|\/2\/profile\/me|\/2\/video\/flow_stream|\/2\/video\/flow_stream_cache|\/2\/push\/daily|\/2\/push\/active|\/2\/guest\/push_active|\/2\/groups\/allgroups\/v2|\/2\/client\/abserver_list|\/2\/checkin\/show|\/2\/video\/remind_info|\/2\/video\/home_channels)(?=[?#]|$)/i then script("https://ddgksf2013.top/scripts/weibo_json.js") with tag="微博信息流与页面净化", timeout=60, requires_body=true
+response if ${url} ~= /^https?:\/\/bootpreload\.uve\.weibo\.com(?:\/v2\/ad\/preload)(?=[?#]|$)/i then script("https://ddgksf2013.top/scripts/weibo_json.js") with tag="开屏广告预加载", timeout=60, requires_body=true
+response if ${url} ~= /^https?:\/\/wbapp\.uve\.weibo\.com(?:\/wbapplua\/wbpullad\.lua)(?=[?#]|$)/i then script("https://ddgksf2013.top/scripts/weibo_json.js") with tag="应用内广告", timeout=60, requires_body=true
+
+[MITM]
+hostname = api.weibo.cn, bootpreload.uve.weibo.com, wbapp.uve.weibo.com
