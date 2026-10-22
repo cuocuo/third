@@ -1,0 +1,10 @@
+#!name = NYFM (ios151 Loon 封装)
+#!desc = 原生规则封装，存在重叠 MITM 风险，建议按需启用
+#!homepage = https://raw.githubusercontent.com/ios151/Rewrite/main/itunes/NYFM.js
+#!author = ios151 / 规则适配
+# 原作者脚本地址和逻辑不作修改
+[Script]
+http-response ^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path=https://raw.githubusercontent.com/ios151/Rewrite/main/itunes/NYFM.js, requires-body=true, timeout=30, tag=NYFM_response
+
+[MITM]
+hostname = buy.itunes.apple.com
