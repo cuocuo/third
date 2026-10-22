@@ -1,0 +1,15 @@
+#!name = caiyuntianqi（Loon 原生迁移）
+#!desc = 从原作者 QX 规则迁移，实际运行需验证
+#!author = chxm1023
+#!homepage = https://raw.githubusercontent.com/chxm1023/Rewrite/main/caiyuntianqi.js
+#!system = iOS,iPadOS
+#!loon_version = 3.5.1(983)
+#!date = 2026-10-22
+
+[Script]
+http-response ^https?:\/\/(ad|biz|wrapper|starplucker)\.cyapi\.cn\/.+\/((activity\?app_name|operation|config|req\?app_name=weather)|v\d\/(trial_card\/info|entries|friend_cards|token\/device)) script-path=https://raw.githubusercontent.com/chxm1023/Rewrite/main/caiyuntianqi.js, timeout=60, requires-body=true, tag=caiyuntianqi_1
+http-response ^https?:\/\/(biz|wrapper|starplucker)\.cyapi\.cn\/(v\d\/user\?app_name|.+\/v\d\/(vip_info|user_detail)) script-path=https://raw.githubusercontent.com/chxm1023/Rewrite/main/caiyuntianqi.js, timeout=60, requires-body=true, tag=caiyuntianqi_2
+http-request ^https?:\/\/(api|wrapper)\.cyapi\.cn\/v\d\/(satellite|nafp\/origin_images) script-path=https://raw.githubusercontent.com/chxm1023/Rewrite/main/caiyuntianqi.js, timeout=60, tag=caiyuntianqi_3
+
+[MITM]
+hostname = *.cyapi.cn

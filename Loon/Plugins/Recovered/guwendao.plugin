@@ -1,0 +1,13 @@
+#!name = guwendao（Loon 原生迁移）
+#!desc = 从原作者 QX 规则迁移，实际运行需验证
+#!author = chxm1023
+#!homepage = https://raw.githubusercontent.com/chxm1023/Rewrite/main/guwendao.js
+#!system = iOS,iPadOS
+#!loon_version = 3.5.1(983)
+#!date = 2026-10-22
+
+[Script]
+http-response ^https?:\/\/.*\.guwendao\.net\/(api\/user\/getVip|router\/user\/getUserInfo) script-path=https://raw.githubusercontent.com/chxm1023/Rewrite/main/guwendao.js, timeout=60, requires-body=true, tag=guwendao_1
+
+[MITM]
+hostname = *.guwendao.net
