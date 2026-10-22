@@ -1,0 +1,13 @@
+#!name = plpl (Loon 原生迁移)
+#!desc = 来自 ios151 的 JS 内嵌 QX 重写配置
+#!author = ios151
+#!homepage = https://raw.githubusercontent.com/ios151/Rewrite/main/plpl.js
+#!system = iOS,iPadOS
+#!loon_version = 3.5.1(983)
+#!date = 2026-10-22
+
+[Script]
+http-response https:\/\/(?:\S+\/video\/info\/.*\?token=\S+) script-path=https://raw.githubusercontent.com/ios151/Rewrite/main/plpl.js,timeout=60,requires-body=true,tag=plpl_1
+
+[MITM]
+hostname = apiaws.*.com, apiaws.*.cn, *apiaws*
