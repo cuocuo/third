@@ -1,0 +1,14 @@
+#!name = dcm (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/dcm.js
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/dcm.js
+
+[Script]
+http-response ^https?:\/\/app\.theinitium\.com\/subs\/initiummedia_subs\/verify_subscription script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Scripts/dcm.js, timeout=60, requires-body=true, tag=dcm_1
+
+[MITM]
+hostname = app.theinitium.com

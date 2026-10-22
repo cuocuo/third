@@ -1,0 +1,18 @@
+#!name = mgtv (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/WeiGiegie/666/main/mgtv.js
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/WeiGiegie/666/main/mgtv.js
+
+[Rewrite]
+^https?://mobile.da.mgtv.com\/m\/page reject
+
+[Script]
+http-response ^https?:\/\/.*mgtv.com.*(GetUserInfo|module\/list\?_support|app\/bdboot|pullReleaseInfo|floor\/detail|video\/source|entry\?_support).*$ script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/mgtv.js, timeout=60, requires-body=true, tag=mgtv_1
+http-request ^https?:\/\/mobile-stream\.api\.mgtv\.com\/v1\/video\/source\? script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/mgtk.js, timeout=60, tag=mgtv_2
+
+[MITM]
+hostname = *mgtv.com, hb-boom.api.mgtv.com, *.api.mgtv.com, mobile-stream.api.mgtv.com, nuc.api.mgtv.com, iphone.v0.mgtv.com, api.data.mgtv.com, *.*.mgtv.*
