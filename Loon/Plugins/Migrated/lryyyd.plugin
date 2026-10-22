@@ -1,0 +1,14 @@
+#!name = lryyyd (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/WeiGiegie/666/main/lryyyd.js
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/WeiGiegie/666/main/lryyyd.js
+
+[Script]
+http-response ^https?:\/\/duoting.tatatimes.com\/tataeraapi\/api.s\?h=QueryVipUser script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/lryyyd.js, timeout=60, requires-body=true, tag=lryyyd_1
+
+[MITM]
+hostname = duoting.tatatimes.com

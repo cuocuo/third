@@ -1,0 +1,15 @@
+#!name = crack (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/afengye/QX/main/crack.js
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/afengye/QX/main/crack.js
+
+[Script]
+http-response ^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/.+$) script-path=https://raw.githubusercontent.com/afengye/QX/main/crack.js, timeout=60, requires-body=true, tag=crack_1
+http-request ^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/.+$) script-path=https://raw.githubusercontent.com/afengye/QX/main/crack.js, timeout=60, tag=crack_2
+
+[MITM]
+hostname = api.revenuecat.com, api.rc-backup.com

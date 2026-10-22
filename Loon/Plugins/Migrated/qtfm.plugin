@@ -1,0 +1,21 @@
+#!name = qtfm (Loon 原生迁移)
+#!desc = 从上游 QX/Surge 重写规则迁移；实际效果需真机验证
+#!author = 原作者 / 规则迁移
+#!homepage = https://raw.githubusercontent.com/WeiGiegie/666/main/qtfm.js
+#!loon_version = 3.5.1(983)
+#!system = iOS,iPadOS
+#!date = 2026-10-22
+# upstream: https://raw.githubusercontent.com/WeiGiegie/666/main/qtfm.js
+
+[Rewrite]
+^https://ad\.qtfm\.cn/api/ reject
+^https://ip\.qtfm\.cn/ip reject
+^https://adlaunch\.qtfm\.cn/launch reject
+^https://woqt2\.qtfm\.cn/v2/userConfig reject
+
+[Script]
+http-response ^https?:\/\/(user|app|entry).qtfm.cn\/(m-bff|api|u2\/api)\/(v1|v5)\/(channel_verify|personal\/\?carrier|user).*$ script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/qtfm.js, timeout=60, requires-body=true, tag=qtfm_1
+http-request ^https?:\/\/app\.qtfm\.cn\/m-bff\/v1\/audiostreams script-path=https://raw.githubusercontent.com/WeiGiegie/666/main/qtfm.js, timeout=60, tag=qtfm_2
+
+[MITM]
+hostname = app.qtfm.cn, user.qtfm.cn, recpage-c.qtfm.cn, entry.qtfm.cn, ad.qtfm.cn, ip.qtfm.cn, adlaunch.qtfm.cn, woqt2.qtfm.cn
