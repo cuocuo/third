@@ -1,0 +1,13 @@
+#!name = adapty（Loon 原生迁移）
+#!desc = 从原作者 QX 规则迁移，实际运行需验证
+#!author = chxm1023
+#!homepage = https://raw.githubusercontent.com/chxm1023/Rewrite/main/adapty.js
+#!system = iOS,iPadOS
+#!loon_version = 3.5.1(983)
+#!date = 2026-10-22
+
+[Script]
+http-response ^https?:\/\/api\.adapty\.io\/api\/v\d\/sdk\/(analytics\/profiles|in-apps\/(apple\/receipt\/validate|purchase-containers)|purchase\/app-store) script-path=https://raw.githubusercontent.com/chxm1023/Rewrite/main/adapty.js, timeout=60, requires-body=true, tag=adapty_1
+
+[MITM]
+hostname = api.adapty.io
