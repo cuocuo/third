@@ -1,0 +1,14 @@
+# Finance / wallet / telecom service domains. Does not bypass the VPN for entire apps.
+payload:
+  - 'DOMAIN-SUFFIX,bitget.com'
+  - 'DOMAIN-SUFFIX,bitget.site'
+  - 'DOMAIN-SUFFIX,bitgetwallet.com'
+  - 'DOMAIN-SUFFIX,bgwapi.io'
+  - 'DOMAIN-SUFFIX,ifastgb.com'
+  - 'DOMAIN-SUFFIX,maya.ph'
+  - 'DOMAIN-SUFFIX,paymaya.com'
+  - 'DOMAIN-SUFFIX,plasma.org'
+  - 'DOMAIN-SUFFIX,wise.com'
+  - 'DOMAIN-SUFFIX,transferwise.com'
+  - 'DOMAIN-SUFFIX,dito.ph'
+  - 'DOMAIN-SUFFIX,okx.com'

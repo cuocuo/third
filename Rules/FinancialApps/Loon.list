@@ -1,0 +1,13 @@
+# Financial domains: add to [Rule] ahead of catch-all rules
+DOMAIN-SUFFIX,bitget.com,DIRECT
+DOMAIN-SUFFIX,bitget.site,DIRECT
+DOMAIN-SUFFIX,bitgetwallet.com,DIRECT
+DOMAIN-SUFFIX,bgwapi.io,DIRECT
+DOMAIN-SUFFIX,ifastgb.com,DIRECT
+DOMAIN-SUFFIX,maya.ph,DIRECT
+DOMAIN-SUFFIX,paymaya.com,DIRECT
+DOMAIN-SUFFIX,plasma.org,DIRECT
+DOMAIN-SUFFIX,wise.com,DIRECT
+DOMAIN-SUFFIX,transferwise.com,DIRECT
+DOMAIN-SUFFIX,dito.ph,DIRECT
+DOMAIN-SUFFIX,okx.com,DIRECT

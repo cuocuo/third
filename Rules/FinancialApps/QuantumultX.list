@@ -1,0 +1,13 @@
+# Financial domains: add to [filter_local] before final / remote rules
+host-suffix, bitget.com, direct
+host-suffix, bitget.site, direct
+host-suffix, bitgetwallet.com, direct
+host-suffix, bgwapi.io, direct
+host-suffix, ifastgb.com, direct
+host-suffix, maya.ph, direct
+host-suffix, paymaya.com, direct
+host-suffix, plasma.org, direct
+host-suffix, wise.com, direct
+host-suffix, transferwise.com, direct
+host-suffix, dito.ph, direct
+host-suffix, okx.com, direct
