@@ -1,0 +1,85 @@
+#!name = 美团去广告 (ZenmoFeiShi · Loon)
+#!desc = 美团 App 12.67.403 适配；域名/IP 拦截 + 响应脚本；由 QX MT.snippet 转换。
+#!author = ZenmoFeiShi (原作者) / ChatGPT (Loon 适配)
+#!homepage = https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.snippet
+#!date = 2026-10-26
+#!loon_version = 3.5.1(983)
+
+# 源脚本更新时间：2026-10-25；原版目标：美团 App 12.67.403。
+# 说明：直接复用原作者 MT.js；脚本内容未来更新会随原作者变化。
+# 说明：旧版 Loon 3.5.2(1005) 不支持 DOMAIN-WILDCARD，使用 AND 逻辑规则近似匹配 mquic-* 域名。
+# 注意：规则涉及 HTTPDNS/QUIC 与多个 IP 段，可能影响定位、登录、图片加载或网络性能；异常时先禁用本插件排查。
+
+[Rule]
+# DNS / Shark 域名拦截
+DOMAIN,shark-mt.meituan.com,REJECT
+DOMAIN,shark-default.meituan.com,REJECT
+DOMAIN,shark-dp.meituan.com,REJECT
+DOMAIN,shark-ps.meituan.com,REJECT
+DOMAIN,shark-wm.sankuai.com,REJECT
+DOMAIN,shark.dianping.com,REJECT
+# 原 QX: host-wildcard, mquic-*.meituan.com, reject
+# 兼容 build 1005 的近似匹配：包含 mquic- 且属于 meituan.com 的域名。
+AND,((DOMAIN-KEYWORD,mquic-),(DOMAIN-SUFFIX,meituan.com)),REJECT
+# Loon build 1008+ 可改用更准确的通配符规则（二选一，勿同时启用）：
+# DOMAIN-WILDCARD,mquic-*.meituan.com,REJECT
+DOMAIN,httpdnsmultiapi.meituan.com,REJECT
+DOMAIN,httpdnsmultiapivip.meituan.com,REJECT
+DOMAIN,httpdns.meituan.com,REJECT
+DOMAIN,httpdnsvip.meituan.com,REJECT
+DOMAIN,dnspod.meituan.httpdns.qcloud.com,REJECT
+DOMAIN,dnspod.meituan.httpdns.start.qcloud.com,REJECT
+
+# 目标 IP 拦截（与上游保持一致，不添加 no-resolve，以免改变匹配行为）
+IP-CIDR,202.90.108.13/32,REJECT
+IP-CIDR,202.90.110.46/32,REJECT
+IP-CIDR,202.90.108.69/32,REJECT
+IP-CIDR,202.90.110.45/32,REJECT
+IP-CIDR,202.90.108.68/32,REJECT
+IP-CIDR,202.90.110.48/32,REJECT
+IP-CIDR,202.90.108.67/32,REJECT
+IP-CIDR,202.90.110.36/32,REJECT
+IP-CIDR,202.90.108.54/32,REJECT
+IP-CIDR,202.90.108.55/32,REJECT
+IP-CIDR,203.76.217.51/32,REJECT
+IP-CIDR,203.76.217.53/32,REJECT
+IP-CIDR,203.76.217.241/32,REJECT
+IP-CIDR,203.76.217.243/32,REJECT
+IP-CIDR,103.202.146.30/32,REJECT
+IP-CIDR,103.202.146.49/32,REJECT
+IP-CIDR,101.50.8.64/32,REJECT
+IP-CIDR,103.63.160.64/32,REJECT
+IP-CIDR,103.63.160.69/32,REJECT
+IP-CIDR,103.37.155.77/32,REJECT
+IP-CIDR,103.37.155.60/32,REJECT
+IP-CIDR,111.230.0.200/32,REJECT
+IP-CIDR,139.9.47.231/32,REJECT
+IP-CIDR,121.37.4.167/32,REJECT
+IP-CIDR,119.29.126.219/32,REJECT
+IP-CIDR,106.55.217.56/32,REJECT
+IP-CIDR,103.37.152.224/32,REJECT
+IP-CIDR,119.29.48.215/32,REJECT
+IP-CIDR,42.193.128.160/32,REJECT
+IP-CIDR6,2405:1480:3000:303b::303b/128,REJECT
+IP-CIDR6,2405:1480:1000:3::1e/128,REJECT
+IP-CIDR6,2405:1480:1000:4::15/128,REJECT
+IP-CIDR6,2402:4e00:40:40::2:373/128,REJECT
+
+[Rewrite]
+# QX url reject → Loon 旧式 reject（直接断开，兼容 Loon 3.5.2）
+^https?:\/\/(httpdns|httpdnsvip|httpdnsmultiapi|httpdnsmultiapivip)\.meituan\.com\/ reject
+^http:\/\/103\.37\.155\.60\/fetch reject
+
+[Script]
+# QX script-response-body → Loon response script，requires_body=true
+response if ${url} ~= /^https?:\/\/apimobile\.meituan\.com\/aggroup\/indexTab/ then script("https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js") with tag="美团·首页频道", requires_body=true, timeout=20
+response if ${url} ~= /^https?:\/\/feedguess\.meituan\.com\/lycoris\/scene\/(gwc_feed1_2265|personalcenter_2154)(\?|$)/ then script("https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js") with tag="美团·猜你喜欢", requires_body=true, timeout=20
+response if ${url} ~= /^https?:\/\/mt-personalcenter\.meituan\.com\/usercenter\/display/ then script("https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js") with tag="美团·个人中心", requires_body=true, timeout=20
+response if ${url} ~= /^https?:\/\/apimobile\.meituan\.com\/group\/v1\/deal\/searchpage\/defaultword/ then script("https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js") with tag="美团·搜索默认词", requires_body=true, timeout=20
+response if ${url} ~= /^https?:\/\/apimobile\.meituan\.com\/group\/v1\/deal\/searchpage\/hotword\/city\/divide\/hotrecommend\// then script("https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js") with tag="美团·搜索热词", requires_body=true, timeout=20
+response if ${url} ~= /^https?:\/\/assistify\.meituan\.com\/assistant\/getAppClientHornConfig/ then script("https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js") with tag="美团·AI 助手", requires_body=true, timeout=20
+response if ${url} ~= /^https?:\/\/mop\.meituan\.com\/mop\/entry\/shoppingCartEntry/ then script("https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js") with tag="美团·购物车入口", requires_body=true, timeout=20
+response if ${url} ~= /^https?:\/\/mop\.meituan\.com\/api\/entryModule\/startupPicture/ then script("https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js") with tag="美团·启动图片", requires_body=true, timeout=20
+
+[Mitm]
+hostname = apimobile.meituan.com, feedguess.meituan.com, mop.meituan.com, mt-personalcenter.meituan.com, assistify.meituan.com, httpdns.meituan.com, httpdnsmultiapi.meituan.com
