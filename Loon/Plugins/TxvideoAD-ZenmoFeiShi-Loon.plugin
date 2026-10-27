@@ -15,11 +15,11 @@ DOMAIN,iacc.stgw.qq.com,REJECT
 DOMAIN,tacc.video.qq.com,REJECT
 
 [Script]
-request if ${url} ~= /https?:\\/\\/i\.video\.qq\.com\\/(?:\?.*)?/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·请求处理", timeout=30, requires_body=true, binary_body_mode=true
-response if ${url} ~= /https?:\\/\\/i\.video\.qq\.com\\/(?:\?.*)?/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·播放数据", timeout=30, requires_body=true, binary_body_mode=true
-response if ${url} ~= /https?:\\/\\/iacc\.qq\.com\\/(?:\?.*)?/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·启动广告", timeout=30, requires_body=true, binary_body_mode=true
-response if ${url} ~= /https?:\\/\\/config\.ab\.qq\.com\\/tab\\/GetTabRemoteConfig(?:\?.*)?/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·标签配置", timeout=30, requires_body=true, binary_body_mode=true
-response if ${url} ~= /https:\\/\\/rdelivery\.qq\.com\\/v1\\/sdkconfig\\/get(?:\?.*)?/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·灰度配置", timeout=30, requires_body=true, binary_body_mode=false
+request if ${url} ~= /^https?:\/\/i\.video\.qq\.com\/(?:\?.*)?$/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·请求处理", timeout=30, requires_body=true, binary_body_mode=true
+response if ${url} ~= /^https?:\/\/i\.video\.qq\.com\/(?:\?.*)?$/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·播放数据", timeout=30, requires_body=true, binary_body_mode=true
+response if ${url} ~= /^https?:\/\/iacc\.qq\.com\/(?:\?.*)?$/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·启动广告", timeout=30, requires_body=true, binary_body_mode=true
+response if ${url} ~= /^https?:\/\/config\.ab\.qq\.com\/tab\/GetTabRemoteConfig(?:\?.*)?$/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·标签配置", timeout=30, requires_body=true, binary_body_mode=true
+response if ${url} ~= /^https:\/\/rdelivery\.qq\.com\/v1\/sdkconfig\/get(?:\?.*)?$/ then script("https://raw.githubusercontent.com/cuocuo/third/main/Loon/Scripts/TxvideoAD-ZenmoFeiShi-Loon.js") with tag="腾讯视频·灰度配置", timeout=30, requires_body=true, binary_body_mode=false
 
 [MITM]
 hostname = i.video.qq.com, iacc.qq.com, config.ab.qq.com, rdelivery.qq.com
