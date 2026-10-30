@@ -1,3 +1,6 @@
+// upstream_config: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/TxvideoAD.snippet
+// upstream_script: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/Txvideoad.js
+// upstream_script_sha: 662851ff1034f652f67deab25d206216ef48ed2b
 // Adapted for Loon from ZenmoFeiShi/Qx/Txvideoad.js (upstream SHA 662851ff1034f652f67deab25d206216ef48ed2b)
 // Original author: TG@ZenMoFiShi; runtime adapter: bodyBytes -> binary body (Uint8Array)
 // Must set requires_body=true, binary_body_mode=true for binary request/response rules.
