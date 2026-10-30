@@ -1,3 +1,4 @@
+# upstream_script: https://raw.githubusercontent.com/ios151/Rewrite/main/xfbs.js
 #!name = xfbs (Loon 原生迁移)
 #!desc = 来自 ios151 的 JS 内嵌 QX 重写配置
 #!author = ios151
