@@ -1,3 +1,4 @@
+# upstream_script: https://raw.githubusercontent.com/ios151/Rewrite/main/one.js
 #!name = one (ios151 Loon 封装)
 #!desc = 原生规则封装，存在重叠 MITM 风险，建议按需启用
 #!homepage = https://raw.githubusercontent.com/ios151/Rewrite/main/one.js
