@@ -1,3 +1,7 @@
+# upstream_config: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/TxvideoAD.snippet
+# upstream_script: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/Txvideoad.js
+# upstream_script_sha: 662851ff1034f652f67deab25d206216ef48ed2b
+# verified: 2026-10-29; source rules and script unchanged; Loon binary adapter retained.
 #!name = 腾讯视频净化 (ZenmoFeiShi · Loon)
 #!desc = 腾讯视频开屏/片头广告、底部冗余 Tab 和个人中心页面净化；由 QX TxvideoAD.snippet 迁移。
 #!author = TG@ZenMoFiShi (原作者) / ChatGPT (Loon 适配)
