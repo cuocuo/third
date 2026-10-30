@@ -1,3 +1,5 @@
+# upstream_config: https://ddgksf2013.top/rewrite/WeiboEnhanced.conf
+# upstream_script: https://ddgksf2013.top/scripts/weibo_json.js
 #!name = 微博增强 WeiboEnhanced（Loon 原生）
 #!desc = 将墨鱼 WeiboEnhanced QX 重写规则迁移为 Loon 3.5.2 原生 Script 插件，不需要 Script Hub
 #!author = ddgksf2013（原规则与脚本） / Loon 原生语法改写
