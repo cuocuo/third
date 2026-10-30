@@ -1,3 +1,5 @@
+# upstream_config: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.snippet
+# upstream_script: https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.js
 #!name = 美团去广告 (ZenmoFeiShi · Loon)
 #!desc = 美团 App 12.67.403 适配；域名/IP 拦截 + 响应脚本；由 QX MT.snippet 转换。
 #!author = ZenmoFeiShi (原作者) / ChatGPT (Loon 适配)
