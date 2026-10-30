@@ -46,7 +46,7 @@
 | [woniushuimian.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/Recovered/woniushuimian.plugin) | JS | [原始链接](https://raw.githubusercontent.com/chxm1023/Rewrite/main/woniushuimian.js) | — |
 | [xbyj.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/Recovered/xbyj.plugin) | JS | [原始链接](https://raw.githubusercontent.com/chxm1023/Rewrite/main/xbyj.js) | — |
 | [TxvideoAD-ZenmoFeiShi-Loon.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/TxvideoAD-ZenmoFeiShi-Loon.plugin) | 配置+本地适配 JS | [原始链接](https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/TxvideoAD.snippet) | 本地 JS 需在上游变化后重新适配 |
-| [WeiboEnhanced-Loon.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/WeiboEnhanced-Loon.plugin) | 配置 | [原始链接](https://ddgksf2013.top/rewrite/WeiboEnhanced.conf) | 外部域名当前无法自动读取 |
+| [WeiboEnhanced-Loon.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/WeiboEnhanced-Loon.plugin) | 配置 | [原始链接](https://ddgksf2013.top/rewrite/WeiboEnhanced.conf) | 用户已确认原始 QX 地址；2026-10-29 无法自动获取上游正文，规则更新待比对 |
 | [BodyOk.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/Yu9191-Migrated/BodyOk.plugin) | JS | [原始链接](https://raw.githubusercontent.com/ios151/Rewrite/main/BodyOk.js) | — |
 | [FTzhongwenwang.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/Yu9191-Migrated/FTzhongwenwang.plugin) | JS | [原始链接](https://raw.githubusercontent.com/ios151/Rewrite/main/FTzhongwenwang.js) | — |
 | [lwj.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/Yu9191-Migrated/lwj.plugin) | JS | [原始链接](https://raw.githubusercontent.com/ios151/Rewrite/main/lwj.js) | — |
