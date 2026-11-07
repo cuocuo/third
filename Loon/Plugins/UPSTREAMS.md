@@ -1,11 +1,12 @@
 # Loon 迁移插件原始来源索引
 
-核对日期：2026-10-29。此索引记录来源，不意味着每个脚本已做 Loon 真机测试。
+核对日期：2026-11-07。此索引记录来源，不意味着每个脚本已做 Loon 真机测试。
 
 > 配置：原始 `.snippet/.conf/.sgmodule`；JS：只有原始 `.js`，从其中内嵌规则生成 Loon 插件。JS 更新时，远程 JS 内容会自动变化，但本地静态匹配规则不会自动更新。镜像：引用的是上游聚合/镜像文件，不一定是原作者的唯一权威地址。
 
 | 本地插件 | 来源类型 | 来源 Raw | 备注 |
 | --- | --- | --- | --- |
+| [HupuAds-Loon.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/HupuAds-Loon.plugin) | 配置+JS | [原始 QX 配置](https://raw.githubusercontent.com/akaagiao1/quantumult-x-scripts/main/hupu/hupu-ad.conf) | [上游 JS](https://raw.githubusercontent.com/akaagiao1/quantumult-x-scripts/main/hupu/hupu-ad-test.js)；仅适配虎扑 8.2.67 广告接口，需真机验证 |
 | [Meituan-ZenmoFeiShi-Loon.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/Meituan-ZenmoFeiShi-Loon.plugin) | 配置 | [原始链接](https://raw.githubusercontent.com/ZenmoFeiShi/Qx/refs/heads/main/MT.snippet) | — |
 | [byhz.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/Migrated/byhz.plugin) | JS | [原始链接](https://raw.githubusercontent.com/WeiGiegie/666/main/byhz.js) | — |
 | [crack.plugin](https://github.com/cuocuo/third/blob/main/Loon/Plugins/Migrated/crack.plugin) | JS | [原始链接](https://raw.githubusercontent.com/afengye/QX/main/crack.js) | — |
