@@ -1,0 +1,20 @@
+#!name = 虎扑广告过滤（Loon）
+#!desc = 适配原 QX 虎扑 8.2.67 测试版广告过滤；仅处理 goblin.hupu.com 的 getOther/v3、batch 响应。
+#!author = akaagiao1（原作者） / Loon 语法适配
+#!homepage = https://github.com/akaagiao1/quantumult-x-scripts/blob/main/hupu/hupu-ad.conf
+#!system = iOS,iPadOS
+#!date = 2026-11-07
+
+# upstream_config: https://raw.githubusercontent.com/akaagiao1/quantumult-x-scripts/main/hupu/hupu-ad.conf
+# upstream_script: https://raw.githubusercontent.com/akaagiao1/quantumult-x-scripts/main/hupu/hupu-ad-test.js
+# source_config_sha: 7ab1eab5026986cfa7911de1bb9e76d84d758c2e
+# source_script_sha: 43a120390992db752dcf6d15f7eafd0fe7b62e44
+# 说明：保留上游 JS URL，原作者更新 JS 后可由 Loon 直接获取；但 QX 静态匹配规则变化需再次转换。
+# 说明：仅适配 8.2.67 接口路径；其他 App 版本与接口需另行验证。
+# 脚本只在 ad_code=1 且 ads 为非空数组时清空 ads，异常或非预期响应原样放行。
+
+[Script]
+response if ${url} ~= /^https:\/\/goblin\.hupu\.com\/3\/8\.2\.67\/interfaceAd\/getOther\/(?:v3|batch)(?:\?|$)/ then script("https://raw.githubusercontent.com/akaagiao1/quantumult-x-scripts/main/hupu/hupu-ad-test.js") with tag="虎扑·广告过滤", timeout=20, requires_body=true
+
+[MITM]
+hostname = goblin.hupu.com
