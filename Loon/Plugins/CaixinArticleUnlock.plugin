@@ -1,0 +1,24 @@
+#!name = 财新文章解锁（Surge 转 Loon）
+#!desc = 仅按原 Surge 模块处理财新文章正文及文章权限，屏蔽 gg.caixin.com
+#!author = 原模块作者（未署名） / Loon 语法转换
+#!homepage = https://caixin-surge.pages.dev/surge/caixin-unlock.sgmodule
+#!system = iOS,iPadOS
+#!loon_version = 3.5.1(983)
+#!date = 2026-11-17
+
+# upstream_config: https://caixin-surge.pages.dev/surge/caixin-unlock.sgmodule
+# upstream_script_article: https://caixin-surge.pages.dev/surge/caixin-article.js
+# upstream_script_auth: https://caixin-surge.pages.dev/surge/caixin-vip.js
+# source_provided_by_user: true; upstream JS was not readable during conversion.
+# Surge script-update-interval=300 and max-size (524288/131072) have no supported equivalent in Loon Script v2; not silently treated as equivalent.
+# Retains original request URL patterns, two response scripts, reject rule and MITM hosts.
+
+[Rule]
+DOMAIN-SUFFIX,gg.caixin.com,REJECT
+
+[Script]
+response if ${url} ~= /^https:\/\/mappsv5\.caixin\.com\/articlev5\/\d+\/\d+\.html/ then script("https://caixin-surge.pages.dev/surge/caixin-article.js") with tag="文章正文", timeout=30, requires_body=true
+response if ${url} ~= /^https:\/\/gateway\.caixin\.com\/api\/app-api\/auth\/newValidate$/ then script("https://caixin-surge.pages.dev/surge/caixin-vip.js") with tag="文章权限", timeout=20, requires_body=true
+
+[MITM]
+hostname = mappsv5.caixin.com, gateway.caixin.com
