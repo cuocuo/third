@@ -1,5 +1,6 @@
-# 财新文章解锁 - 附加分流规则（Quantumult X）
+# 财新文章及收听解锁 - Quantumult X 分流
 # upstream_config: https://caixin-surge.pages.dev/surge/caixin-unlock.sgmodule
-# Original Surge rule: DOMAIN-SUFFIX,gg.caixin.com,REJECT
-# QX: add this file under [filter_remote], not [rewrite_remote].
-host-suffix, gg.caixin.com, reject
+# Replaces previous host-suffix rule: upstream now blocks two exact domains.
+# QX: import under [filter_remote], not [rewrite_remote].
+host, gg.caixin.com, reject
+host, dolphin.caixin.com, reject
