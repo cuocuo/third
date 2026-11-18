@@ -1,24 +1,40 @@
-#!name = 财新文章解锁（Surge 转 Loon）
-#!desc = 仅按原 Surge 模块处理财新文章正文及文章权限，屏蔽 gg.caixin.com
+#!name = 财新文章及收听解锁（Surge 转 Loon）
+#!desc = 文章正文与收听权限、deepview 配置及 6 条广告 JSON 清空规则
 #!author = 原模块作者（未署名） / Loon 语法转换
 #!homepage = https://caixin-surge.pages.dev/surge/caixin-unlock.sgmodule
 #!system = iOS,iPadOS
 #!loon_version = 3.5.1(983)
-#!date = 2026-11-17
+#!date = 2026-11-18
 
 # upstream_config: https://caixin-surge.pages.dev/surge/caixin-unlock.sgmodule
 # upstream_script_article: https://caixin-surge.pages.dev/surge/caixin-article.js
 # upstream_script_auth: https://caixin-surge.pages.dev/surge/caixin-vip.js
-# source_provided_by_user: true; upstream JS was not readable during conversion.
-# Surge script-update-interval=300 and max-size (524288/131072) have no supported equivalent in Loon Script v2; not silently treated as equivalent.
-# Retains original request URL patterns, two response scripts, reject rule and MITM hosts.
+# upstream_script_audio: https://caixin-surge.pages.dev/surge/caixin-audio.js
+# upstream_script_deepview: https://caixin-surge.pages.dev/surge/caixin-deepview.js
+# source: user-supplied updated Surge module on 2026-11-18.
+# JS runtimes were not independently tested on Loon / QX. This configuration directly references upstream JS.
+# Source Surge [Map Local] uses HTTP 200 body {}; Loon/QX reject-dict is the closest supported equivalent.
+# Source Surge script-update-interval=300 and per-rule max-size have no direct equivalent in these remote rules.
 
 [Rule]
-DOMAIN-SUFFIX,gg.caixin.com,REJECT
+DOMAIN,gg.caixin.com,REJECT
+DOMAIN,dolphin.caixin.com,REJECT
+
+[Rewrite]
+# Surge Map Local: data-type=text data="{}" status-code=200 header="Content-Type:application/json"
+^https:\/\/cxdata\.caixin\.com\/api\/dataplus\/stkData\/list reject-dict
+^https:\/\/entities\.caixin\.com\/api\/public\/push\/appIndex\?(?:[^#?&]+&)*target=index reject-dict
+^https:\/\/gateway\.caixin\.com\/api\/app-api\/search\/getkeyword reject-dict
+^https:\/\/gateway\.caixin\.com\/api\/app-api\/caixinminiapp\/appinfo reject-dict
+^https:\/\/gateway\.caixin\.com\/api\/app-api\/articlesHotRecommend\/getHotRecommendArticles reject-dict
+^https:\/\/www\.caixin\.com\/ai\/question.+ reject-dict
 
 [Script]
 response if ${url} ~= /^https:\/\/mappsv5\.caixin\.com\/articlev5\/\d+\/\d+\.html/ then script("https://caixin-surge.pages.dev/surge/caixin-article.js") with tag="文章正文", timeout=30, requires_body=true
+response if ${url} ~= /^https:\/\/mini\.caixin\.com\/(m\/)?\d{4}-\d{2}-\d{2}\/\d+\.html/ then script("https://caixin-surge.pages.dev/surge/caixin-article.js") with tag="mini文章正文", timeout=30, requires_body=true
 response if ${url} ~= /^https:\/\/gateway\.caixin\.com\/api\/app-api\/auth\/newValidate$/ then script("https://caixin-surge.pages.dev/surge/caixin-vip.js") with tag="文章权限", timeout=20, requires_body=true
+response if ${url} ~= /^https:\/\/gateway\.caixin\.com\/api\/app-api\/auth\/validateAudioAuth$/ then script("https://caixin-surge.pages.dev/surge/caixin-audio.js") with tag="音频解锁", timeout=25, requires_body=true
+response if ${url} ~= /^https:\/\/deepview-dynamic\.caixin\.com\/api\/topic\/config\/(event|topic)\// then script("https://caixin-surge.pages.dev/surge/caixin-deepview.js") with tag="deepview配置", timeout=10, requires_body=true
 
 [MITM]
-hostname = mappsv5.caixin.com, gateway.caixin.com
+hostname = mappsv5.caixin.com, gateway.caixin.com, mini.caixin.com, cxdata.caixin.com, entities.caixin.com, www.caixin.com, deepview-dynamic.caixin.com
